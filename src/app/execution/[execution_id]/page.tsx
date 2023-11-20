@@ -1,6 +1,10 @@
 "use client";
 
 import { BPImperialItalic, LibreBaskerville } from "@/styles/fonts";
+import { Label, Select } from "flowbite-react";
+
+const options = ["Muito Baixo", "Baixo", "Moderado", "Alto", "Muito Alto"]; // Replace this with your own array of options
+const id = "avaliacao";
 
 export default function Page({ params }: { params: { execution_id: string } }) {
   return (
@@ -18,9 +22,24 @@ export default function Page({ params }: { params: { execution_id: string } }) {
             </h3>
           </div>
           <div className="bg-[#BCBEFA] hover:bg-violet-400 active:bg-violet-500 font-bold pt-2 w-full flex items-center justify-center rounded-lg">
-            <h3 className={`${LibreBaskerville.className} text-center text-xl`}>
-              Auto Avaliação de Desempenho
-            </h3>
+            <div className="w-full flex flex-col flex-wrap items-center rounded-lg bg-[#BCBEFA] hover:bg-violet-400 active:bg-violet-500 font-bold pt-2">
+              <div className="mb-2 block">
+                <Label
+                  htmlFor="avaliacao"
+                  value="Auto Avaliação de Desempenho"
+                  className={`${LibreBaskerville.className} text-sm w-full`}
+                />
+              </div>
+              <Select
+                id={id}
+                required
+                className={`${LibreBaskerville.className} w-full`}
+              >
+                {options.map((option, index) => (
+                  <option key={index}>{option}</option>
+                ))}
+              </Select>
+            </div>
           </div>
         </div>
         {/* The background div */}

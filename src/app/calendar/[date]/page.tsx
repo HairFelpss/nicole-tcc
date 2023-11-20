@@ -30,6 +30,7 @@ const Page = ({ params }: { params: { date: string } }) => {
           />
         </div>
         <Select
+          multiple={label === "Dores" ? true : false}
           id={id}
           required
           className={`${LibreBaskerville.className} w-full`}
@@ -52,11 +53,11 @@ const Page = ({ params }: { params: { date: string } }) => {
   ];
 
   const selectValues = [
-    ["United States", "Canada", "France", "Germany"],
-    ["United States", "Canada", "France", "Germany"],
-    ["United States", "Canada", "France", "Germany"],
-    ["United States", "Canada", "France", "Germany"],
-    ["United States", "Canada", "France", "Germany"],
+    ["Ausente", "Leve", "Moderada", "Intensa"],
+    ["< 36º", "> 36º < 37.5º", "> 37.5º"],
+    ["Exaustão", "Cansaço", "Energia", "Muita Energia"],
+    ["Alterações de Humor", "Ansiosa", "Irritável", "Tranquila"],
+    ["Sem dor", "Cólica Menstrual", "Ovulação", "Dor de cabeça", "Dor Lombar"],
     ["Ausente", "Leve", "Moderada", "Intensa"],
   ];
 
