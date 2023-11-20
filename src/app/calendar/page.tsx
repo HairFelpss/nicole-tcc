@@ -1,32 +1,29 @@
 "use client";
-
 import { BPImperialItalic, LibreBaskerville } from "@/styles/fonts";
 import { Datepicker } from "flowbite-react";
-
-import { Checkbox } from "@/components/ui/checkbox";
 import { useRouter } from "next/navigation";
 
-export default function CalendarPage() {
+const CalendarPage = () => {
   const router = useRouter();
+
+  const handleDateChange = (date: Date | null) => {
+    if (date) {
+      const formattedDate = date.toISOString().split("T")[0];
+      router.push(`/calendar/${formattedDate}`);
+    }
+  };
 
   return (
     <main className={BPImperialItalic.className}>
-      <div className="flex flex-col min-h-screen items-center px-10 justify-center">
-
+      <div className="flex flex-col min-h-screen items-center px-10 justify-center relative z-10">
         <Datepicker
           inline
           title="Calendário Menstrual"
           language="pt-BR"
           showClearButton={false}
           showTodayButton={false}
-          onSelectedDateChanged={(date) => {
-            const d = new Date(date).toISOString().split("T")[0];
-            router.push(`/calendar/${d}`);
-          }}
-          className={
-            LibreBaskerville.className +
-            " z-[1000] bg-[#BCBEFA] hover:bg-[#A9AAC7] active:bg-[#606294]"
-          }
+          onSelectedDateChanged={handleDateChange}
+          className={`${LibreBaskerville.className} z-[1000] bg-[#BCBEFA] hover:bg-[#A9AAC7] active:bg-[#606294]`}
           theme={{
             root: {
               base: "relative",
@@ -128,7 +125,7 @@ export default function CalendarPage() {
                   <p className="text-center text-xs text-black">
                     Desenvolvido por
                   </p>
-                  <h2 className="text-center text-xl text-extrabold  text-black">
+                  <h2 className="text-center text-xl text-extrabold text-black">
                     Nicole Federici
                   </h2>
                 </div>
@@ -139,4 +136,6 @@ export default function CalendarPage() {
       </div>
     </main>
   );
-}
+};
+
+export default CalendarPage;

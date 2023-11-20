@@ -1,11 +1,28 @@
 "use client";
 
-import { BPImperialItalic } from "@/styles/fonts";
+import { BPImperialItalic, LibreBaskerville } from "@/styles/fonts";
 
-export default function DailyTraining() {
+export default function Page({ params }: { params: { execution_id: string } }) {
   return (
     <main className={BPImperialItalic.className}>
-      <div className="flex flex-col min-h-screen items-center px-10 justify-center">
+      <div className="flex flex-col min-h-screen items-center px-10 ">
+        <h1
+          className={`${LibreBaskerville.className} my-10 text-2xl w-full  text-center font-bold z-40`}
+        >
+          {params.execution_id}
+        </h1>
+        <div className="z-10 flex flex-col space-y-4 w-full h-[60vh] overflow-auto">
+          <div className="bg-[#BCBEFA] hover:bg-violet-400 active:bg-violet-500 font-bold pt-2 w-full flex items-center justify-center rounded-lg">
+            <h3 className={`${LibreBaskerville.className} text-center text-xl`}>
+              Exercícios
+            </h3>
+          </div>
+          <div className="bg-[#BCBEFA] hover:bg-violet-400 active:bg-violet-500 font-bold pt-2 w-full flex items-center justify-center rounded-lg">
+            <h3 className={`${LibreBaskerville.className} text-center text-xl`}>
+              Auto Avaliação de Desempenho
+            </h3>
+          </div>
+        </div>
         {/* The background div */}
         <div
           className="absolute inset-0 z-0 pointer-events-none"

@@ -3,35 +3,40 @@
 import { BPImperialItalic, LibreBaskerville } from "@/styles/fonts";
 import Link from "next/link";
 
-const training = [
-  { professional_id: "personal", professional_name: "Personal Trainer" },
-  { professional_id: "ginecologista", professional_name: "Ginecologista" },
-  { professional_id: "nutricionista", professional_name: "Nutricionista" },
-  { professional_id: "psicologo", professional_name: "Psicológo" },
+import { Button } from "@/components/ui/button";
+
+const buttonsData = [
+  { href: "/execution/biceps", text: "Bíceps" },
+  { href: "/execution/triceps", text: "Tríceps" },
+  { href: "/execution/abdomem", text: "Abdômen" },
+  { href: "/execution/aerobico", text: "Aeróbico" },
+  { href: "/execution/posterior", text: "Posterior" },
+  { href: "/execution/quadriceps", text: "Quadríceps" },
 ];
 
-export default function Contact() {
+export default function ExecutionPage() {
   return (
     <main className={BPImperialItalic.className}>
-      <div className="flex flex-col min-h-screen items-center">
-        <h1 className="z-10 my-10 text-2xl w-full  text-center font-bold">
-          Contato Profissional
+      <div className="flex flex-col min-h-screen items-center px-10">
+        <h1
+          className={`${LibreBaskerville.className} z-10 my-10 text-2xl w-full text-center font-bold`}
+        >
+          Execuções
         </h1>
-        <div className="z-10 flex flex-col space-y-10 w-full h-[60vh] overflow-auto mr-20 mt-10">
-          {training.map((training, index) => (
-            <Link
-              className="bg-[#BCBEFA] hover:bg-violet-400 active:bg-violet-500 font-bold pt-2 w-full flex items-center justify-center rounded-lg"
-              key={index}
-              href={`/contact/${training.professional_id}`}
-            >
-              <h3
-                className={`${LibreBaskerville.className} text-center text-xl`}
-              >
-                {training.professional_name}
-              </h3>
-            </Link>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-5 justify-items-center z-10">
+          {buttonsData.map((button, index) => (
+            <div key={index} className="w-full h-full">
+              <Link href={button.href}>
+                <Button className="w-full h-full flex items-center justify-center bg-[#BCBEFA] hover:bg-violet-400 active:bg-violet-500 font-bold">
+                  <h3 className={`${LibreBaskerville.className} my-6 text-sm`}>
+                    {button.text}
+                  </h3>
+                </Button>
+              </Link>
+            </div>
           ))}
         </div>
+
         {/* The background div */}
         <div
           className="absolute inset-0 z-0 pointer-events-none"

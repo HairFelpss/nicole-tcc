@@ -2,6 +2,13 @@
 
 import { BPImperialItalic } from "@/styles/fonts";
 
+const userProfile = {
+  name: "Nicole Federici",
+  bio: "Fitness enthusiast and trainer passionate about empowering women in their fitness journey.",
+  avatarUrl: "https://example.com/avatar.jpg", // Replace with your avatar URL
+  // Add more user information as needed
+};
+
 export default function Profile() {
   return (
     <main className={BPImperialItalic.className}>

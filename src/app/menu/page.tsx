@@ -1,9 +1,5 @@
-"use client";
-
-import { BPImperialItalic, LibreBaskerville } from "@/styles/fonts";
-import Link from "next/link";
-
 import { Button } from "@/components/ui/button";
+import { BPImperialItalic, LibreBaskerville } from "@/styles/fonts";
 import {
   CalendarSearch,
   Dumbbell,
@@ -12,76 +8,39 @@ import {
   PlayCircle,
   UserCircle2,
 } from "lucide-react";
+import Link from "next/link";
+import React from "react";
+
+const MenuItem = ({ href, icon, text }: any) => {
+  return (
+    <Link href={href}>
+      <Button className="h-50 w-full flex flex-col items-center bg-[#BCBEFA] hover:bg-violet-400 active:bg-violet-500 font-bold">
+        {icon && React.createElement(icon, { className: "h-10 w-10" })}
+        <h3 className={`${LibreBaskerville.className} mt-6 text-xs`}>{text}</h3>
+      </Button>
+    </Link>
+  );
+};
 
 export default function Menu() {
+  const menuItems = [
+    { href: "/calendar", icon: CalendarSearch, text: "CALENDÁRIO MENSTRUAL" },
+    { href: "/daily-training", icon: Dumbbell, text: "DIÁRIO DE TREINAMENTO" },
+    { href: "/contact", icon: Phone, text: "CONTATOS PROFISSIONAIS" },
+    { href: "/feed", icon: Mail, text: "FEED DE MENSAGENS" },
+    { href: "/execution", icon: PlayCircle, text: "EXECUÇÃO" },
+    { href: "/profile", icon: UserCircle2, text: "SEU PERFIL" },
+  ];
+
   return (
     <main className={BPImperialItalic.className}>
-      <div className="flex flex-col min-h-screen items-center px-10 justify-center">
-        <div className="relative z-10">
-          <div className="grid grid-cols-2 gap-12 content-start">
-            <div>
-              <Link href="/calendar">
-                <Button className="h-full w-full flex flex-col flex-wrap items-center  bg-[#BCBEFA] hover:bg-violet-400 active:bg-violet-500 font-bold ">
-                  <CalendarSearch className="h-10 w-10" />
-                  <h3
-                    className={`${LibreBaskerville.className} mt-4 text-sm w-full box-border`}
-                  >
-                    CALENDÁRIO MENSTRUAL
-                  </h3>
-                </Button>
-              </Link>
+      <div className="flex flex-col min-h-screen items-center px-10 justify-center relative">
+        <div className="grid grid-cols-2 gap-8 content-start z-10">
+          {menuItems.map((item, index) => (
+            <div key={index}>
+              <MenuItem {...item} />
             </div>
-            <div>
-              <Link href="/daily-training">
-                <Button className="h-50 w-full flex flex-col items-center bg-[#BCBEFA] hover:bg-violet-400 active:bg-violet-500 font-bold">
-                  <Dumbbell className="h-10 w-10" />
-                  <h3 className={`${LibreBaskerville.className} mt-4`}>
-                    DIÁRIO DE TREINAMENTO
-                  </h3>
-                </Button>
-              </Link>
-            </div>
-            <div>
-              <Link href="/contact">
-                <Button className="h-50 w-full flex flex-col items-center  bg-[#BCBEFA] hover:bg-violet-400 active:bg-violet-500 font-bold">
-                  <Phone className="h-10 w-10" />
-                  <h3 className={`${LibreBaskerville.className} mt-4`}>
-                    CONTATOS PROFISSIONAIS
-                  </h3>
-                </Button>
-              </Link>
-            </div>
-            <div>
-              <Link href="/feed">
-                <Button className="h-50 w-full flex flex-col items-center bg-[#BCBEFA] hover:bg-violet-400 active:bg-violet-500 font-bold">
-                  <Mail className="h-10 w-10" />
-                  <h3 className={`${LibreBaskerville.className} mt-4`}>
-                    FEED DE MENSAGENS
-                  </h3>
-                </Button>
-              </Link>
-            </div>
-            <div>
-              <Link href="/execution">
-                <Button className="h-50 w-full flex flex-col items-center  bg-[#BCBEFA] hover:bg-violet-400 active:bg-violet-500 font-bold">
-                  <PlayCircle className="h-10 w-10" />
-                  <h3 className={`${LibreBaskerville.className} mt-4`}>
-                    EXECUÇÃO
-                  </h3>
-                </Button>
-              </Link>
-            </div>
-            <div>
-              <Link href="/profile">
-                <Button className="h-50 w-full flex flex-col items-center  bg-[#BCBEFA] hover:bg-violet-400 active:bg-violet-500 font-bold">
-                  <UserCircle2 className="h-10 w-10" />
-                  <h3 className={`${LibreBaskerville.className} mt-4`}>
-                    SEU PERFIL
-                  </h3>
-                </Button>
-              </Link>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* The background div */}
@@ -99,7 +58,7 @@ export default function Menu() {
                   <p className="text-center text-xs text-black">
                     Desenvolvido por
                   </p>
-                  <h2 className="text-center text-xl text-extrabold  text-black">
+                  <h2 className="text-center text-xl text-extrabold text-black">
                     Nicole Federici
                   </h2>
                 </div>
