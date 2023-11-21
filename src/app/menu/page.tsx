@@ -44,10 +44,7 @@ export default function Menu() {
         </div>
 
         {/* The background div */}
-        <div
-          className="absolute inset-0 z-0 pointer-events-none"
-          aria-hidden="true"
-        >
+        <div className="absolute inset-0 z-0" aria-hidden="true">
           <div className="flex flex-col h-screen items-center justify-items-start px-10">
             <div className="mt-10 ">
               <h1 className="drop-shadow-[0_0.1px_4.5px_#fff] text-8xl leading-normal text-center text-[#887BB0] font-bold opacity-40">

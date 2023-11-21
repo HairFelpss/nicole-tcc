@@ -1,7 +1,8 @@
 "use client";
 
 import { BPImperialItalic, LibreBaskerville } from "@/styles/fonts";
-import { useState } from "react";
+import Link from "next/link";
+import React from "react";
 
 const trainers = [
   { name: "John Doe", phone: "123456789" },
@@ -62,7 +63,7 @@ export default function Page({
 }: {
   params: { professional_id: string };
 }) {
-  const [hoveredItem, setHoveredItem] = useState<string>("");
+  const [hoveredItem, setHoveredItem] = React.useState<string>("");
 
   return (
     <main className={BPImperialItalic.className}>
@@ -99,24 +100,21 @@ export default function Page({
           )}
         </div>
         {/* The background div */}
-        <div
-          className="absolute inset-0 z-0 pointer-events-none"
-          aria-hidden="true"
-        >
+        <div className="absolute inset-0 z-0" aria-hidden="true">
           <div className="flex flex-col h-screen items-center justify-items-start px-10">
             <div className="mt-10 ">
               <h1 className="drop-shadow-[0_0.1px_4.5px_#fff] text-8xl leading-normal text-center text-[#887BB0] font-bold opacity-40">
                 TRAIN LIKE A GIRL
               </h1>
               <div className="fixed bottom-0 left-0 flex h-20 w-full items-end justify-center lg:static lg:h-auto lg:w-auto sm:static sm:h-auto sm:w-auto">
-                <div className={BPImperialItalic.className}>
+                <Link href="/menu" className={BPImperialItalic.className}>
                   <p className="text-center text-xs text-black">
                     Desenvolvido por
                   </p>
                   <h2 className="text-center text-xl text-extrabold  text-black">
                     Nicole Federici
                   </h2>
-                </div>
+                </Link>
               </div>
             </div>
           </div>
