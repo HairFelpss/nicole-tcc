@@ -1,32 +1,27 @@
 "use client";
 
-import { BPImperialItalic, LibreBaskerville } from "@/styles/fonts";
+import { BPImperialItalic } from "@/styles/fonts";
 import Link from "next/link";
 
-const training = [{ execution_id: "01" }];
-
-export default function Page({ params }: { params: { execution_id: string } }) {
+export default function Page({ params }: { params: { exercise_id: string } }) {
   return (
     <main className={BPImperialItalic.className}>
-      <div className="flex flex-col min-h-screen items-center px-10 ">
+      <div className="flex flex-col min-h-screen items-center">
         <h1 className="z-10 my-10 text-2xl w-full  text-center font-bold">
-          Exercicios
+          Rosca Direta em Pe Polia baixa
         </h1>
-        <div className="z-10 flex flex-col space-y-4 w-full h-[60vh] overflow-auto">
-          {training.map((training, index) => (
-            <Link
-              className="bg-[#BCBEFA] hover:bg-violet-400 active:bg-violet-500 font-bold pt-2 w-full flex items-center justify-center rounded-lg"
-              key={index}
-              href={`/execution/biceps/${training.execution_id}`}
-            >
-              <h3
-                className={`${LibreBaskerville.className} text-center text-xl`}
-              >
-                Rosca Direta em Pé Polia baixa
-              </h3>
-            </Link>
-          ))}
-        </div>
+
+        {params.exercise_id === "01" && (
+          <div className="z-10 flex flex-col space-y-6 w-full mx-20 mt-5 justify-center items-center">
+            <iframe
+              width="250"
+              height="400"
+              src="https://www.youtube.com/embed/x6JCKfdzPJE"
+              title="Rosca Direta em Pé Polia baixa"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            ></iframe>
+          </div>
+        )}
         {/* The background div */}
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <div className="flex flex-col h-screen items-center justify-items-start px-10">
