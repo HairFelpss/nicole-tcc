@@ -3,7 +3,14 @@
 import { BPImperialItalic, LibreBaskerville } from "@/styles/fonts";
 import Link from "next/link";
 
-const training = [{ execution_id: "01" }];
+const training = [
+  { execution_id: "01", execution_name: "Rosca Direta em Pé Polia baixa" },
+  { execution_id: "02", execution_name: "Rosca Direta com Halteres" },
+  { execution_id: "03", execution_name: "Rosca Martelo" },
+  { execution_id: "04", execution_name: "Rosca no banco Scott" },
+  { execution_id: "05", execution_name: "Rosca Direta no banco inclinado" },
+  { execution_id: "06", execution_name: "Rosca Direta concentrada unilateral" },
+];
 
 export default function Page({ params }: { params: { execution_id: string } }) {
   return (
@@ -22,7 +29,7 @@ export default function Page({ params }: { params: { execution_id: string } }) {
               <h3
                 className={`${LibreBaskerville.className} text-center text-xl`}
               >
-                Rosca Direta em Pé Polia baixa
+                {training.execution_name}
               </h3>
             </Link>
           ))}
